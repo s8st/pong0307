@@ -34,7 +34,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool IsPlayerGoal;
+    public bool isPlayer1Goal;
     private GameManager gameManager;
 
     private void Start()
@@ -56,16 +56,19 @@ public class Goal : MonoBehaviour
         // Equals("")
         if (collision.name.Equals("Ball"))
         {
-            Debug.Log("Player 2 Scored");
-            // Player2Scored 실행하라
-            gameManager.Player2Scored();
-        }
-        else
-        {
-            Debug.Log("Player 1 Scored");
-            gameManager.Player1Scored();
-        }
+            if (isPlayer1Goal)
+            {
+                Debug.Log("Player 2 Scored");
+                // Player2Scored 실행하라
+                gameManager.Player2Scored();
+            }
 
+            else
+            {
+                Debug.Log("Player 1 Scored");
+                gameManager.Player1Scored();
+            }
+        }
     }
 
 

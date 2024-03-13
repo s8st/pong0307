@@ -47,6 +47,8 @@ public class Ball : MonoBehaviour
     private void Launch()
     {
         // 게임 시작하면 (x,y)좌표에 랜덤?
+        // 볼이 나가는 방향을 랜덤으로 하기 위해서
+        // (1,1) -->1사분면으로 (-1,-1) ---> 3사분면으로 
         float x = Random.Range(0,2) == 0 ? -1 : 1;
         float y = Random.Range(0,2) == 0 ? -1 : 1;
 
