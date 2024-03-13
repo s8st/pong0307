@@ -1,5 +1,10 @@
 # pong0307
 
+
+![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
+
+---
+
 |스크립트|필드|함수|동작|
 |--|--|--|--|
 |**Ball.cs**|public float speed;<br> public Rigidbody2D rigidbody;|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
@@ -10,6 +15,13 @@
 
 
 --- 
+
+
+
+
+
+---
+
 
 `Ball.cs` :  
 
@@ -215,8 +227,6 @@
 
 
 ---
-
-![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
 
 
  ---
