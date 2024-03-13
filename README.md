@@ -66,6 +66,8 @@ public class Ball : MonoBehaviour
     private void Launch()
     {
         // 게임 시작하면 (x,y)좌표에 랜덤?
+        // 볼이 나가는 방향을 랜덤으로 하기 위해서
+        // (1,1) -->1사분면으로 (-1,-1) ---> 3사분면으로 
         float x = Random.Range(0,2) == 0 ? -1 : 1;
         float y = Random.Range(0,2) == 0 ? -1 : 1;
 
@@ -128,7 +130,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool IsPlayerGoal;
+    public bool isPlayer1Goal;
     private GameManager gameManager;
 
     private void Start()
@@ -150,16 +152,19 @@ public class Goal : MonoBehaviour
         // Equals("")
         if (collision.name.Equals("Ball"))
         {
-            Debug.Log("Player 2 Scored");
-            // Player2Scored 실행하라
-            gameManager.Player2Scored();
-        }
-        else
-        {
-            Debug.Log("Player 1 Scored");
-            gameManager.Player1Scored();
-        }
+            if (isPlayer1Goal)
+            {
+                Debug.Log("Player 2 Scored");
+                // Player2Scored 실행하라
+                gameManager.Player2Scored();
+            }
 
+            else
+            {
+                Debug.Log("Player 1 Scored");
+                gameManager.Player1Scored();
+            }
+        }
     }
 
 
