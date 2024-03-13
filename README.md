@@ -3,11 +3,11 @@
 |스크립트|필드|함수|동작|
 |--|--|--|--|
 |**Ball.cs**|speed,rigidbody|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
-|**Goal.cs**||||
-|**Paddle.cs**||||
-|**GameManager.cs**||||
+|**Goal.cs**|public bool isPlayer1Goal; <br> private GameManager gameManager;|Start()<br>OnTriggerEnter2D(Collider2D collision)| if (collision.name.Equals("Ball"))<br>{if (isPlayer1Goal) else} |
+|**Paddle.cs**| public bool isPlayer1;<br> public float speed;<br> public Rigidbody2D rigidbody; public KeyCode Up;<br> public KeyCode Down;<br> private float movement;<br> private Vector3 startPosition;|Start()<br>Update()<br>Reset()||
+|**GameManager.cs**|public Ball ball;<br> public Paddle player1Paddle;<br>public Goal player1Goal;<br> public Paddle player2Paddle;<br> public Goal player2Goal;<br> public TextMeshProUGUI player1Text;<br> public TextMeshProUGUI player2Text;<br> private int player1Score;<br> private int player2Score;   |Player1Scored()<br>Player2Scored()<br>ResetPosition()||
 
-
+<br>
 ---
 `**Ball.cs**` :  
 - 공이 나가는 방향 랜덤으로
@@ -49,6 +49,161 @@
       Launch();
   }
 ```
+---
+
+
+**Goal.cs**  
+
+- GameManager 할당, --> gameManager.Player2Scored(); 실행하기 위해서
+
+```c#
+ private void Start()
+ {
+     // gameManager = GetComponent<GameManager>();
+     // Goal에 GameManager를 직접 달 수 없다
+     // GameManager.cs는 GameManager의 컴포넌트에 달려있다
+
+     // Find("GameManager") : GameManager를 찾아서 컴포넌트 GameManager.cs를 대입하라
+     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+
+ }
+
+```
+
+- Goal.cs는 골대역할을 하는 Player1Goal과 Player2Goal에 연결됨
+- 즉 골대에 충돌한 물체가 Ball인지 확인하고,
+- isPlayer1Goal이 체크된(유니티에서 Player1Goal에 연결된 Goal.cs의 isPlayer1Goal) 상태라면 ==true
+- gameManager.Player2Scored(); --> 게임메니저의 Player2Scored()를 호출하라
+```c#  
+ // 충돌트리거 
+ private void OnTriggerEnter2D(Collider2D collision)
+ {
+     // 충돌체 이름이 Ball이라면
+     // Equals("")
+     if (collision.name.Equals("Ball"))
+     {
+         if (isPlayer1Goal) //플레이어1에 체크해서 true라면
+         {
+             Debug.Log("Player 2 Scored");
+             // Player2Scored 실행하라
+             gameManager.Player2Scored();
+         }
+
+         else
+         {
+             Debug.Log("Player 1 Scored");
+             gameManager.Player1Scored();
+         }
+     }
+ }
+
+```  
+
+
+---  
+
+**Paddle.cs**  
+
+- 탁구채 startPosition 초기화
+- rigidbody 초기화
+```c#
+ private void Start()
+ {
+     // Paddle.cs는 게임오브젝트인 Player1, Player2에 연결된다
+     //연결된 Player1, Player2의 위치값을 변수에 넣는다.
+     startPosition = transform.position;
+
+     // 변수에 Rigidbody2D 컴포넌트를 넣는다.
+     rigidbody = GetComponent<Rigidbody2D>();
+ }
+```
+- 입력받은 키값으로 위 아래로 움직임
+- velocity에 상하 움직임 * speed
+```c#  
+ private void Update()
+ {
+     movement = 0f;
+
+     // 만약 Input에 키가 Up이라면  movement = 1f;
+     // public KeyCode Up ---> 입력받은 키를 확인해서 movement 값 변경
+     if (Input.GetKey(Up)) { movement += 1f; }
+     if (Input.GetKey(Down)) {  movement -= 1f; }
+
+     // velocity에 위 아래의 y값을 변경 --> 키값에 따라 위 아래로 움직이게 만든다
+     rigidbody.velocity = new Vector2(0, movement * speed);
+
+ }
+
+```  
+- 속도,방향 초기화
+- 시작점 초기화
+```c#   
+ public void Reset()
+ {
+     rigidbody.velocity = Vector3.zero;
+     // startPosition은 유니티 시작시 위치를 대입했기에 시작위치로 되돌린다.
+     transform.position = startPosition;
+ }
+```
+
+
+
+---  
+
+
+
+**GameManager.cs**  
+
+- player1Score 숫자를 올리고
+- 점수판에 문자열로 대입
+- 공과 탁구채 초기화
+```c#  
+ public void Player1Scored()
+ {
+     // player1Score++  ---> 1점 올린다
+     player1Score++;
+
+     //  private int player1Score;  를 문자열로 변환 
+     player1Text.text = player1Score.ToString();
+
+     ResetPosition();
+
+ }
+```
+
+- player2Score 숫자를 올리고
+- 점수판에 문자열로 대입
+- 공과 탁구채 초기화
+```c#  
+ public void Player2Scored()
+ {
+     player2Score++;
+     player2Text.text = player2Score.ToString();
+     ResetPosition();
+
+ }
+```
+- player1Score 숫자를 올리고
+- 점수판에 문자열로 대입
+- 공과 탁구채 초기화
+```c#  
+ private void ResetPosition()
+ {
+     // 게임오브젝트 Ball연결시킨 Ball.cs 컴포넌트에 있는 Reset()메서드 실행
+     ball.Reset();
+     player1Paddle.Reset();
+     player2Paddle.Reset();
+ }
+
+```
+
+
+---   
+
+
+
+
 
 
 
