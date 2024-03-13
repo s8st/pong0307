@@ -1,11 +1,46 @@
 # pong0307
 
-|스크립트|함수|동작|
-|--|--|--|
-|☑️***Ball.cs***|<kbd>Start()</kbd><kbd>Launch()</kbd> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  Launch(); }|
-|**Goal.cs**|||
-|**Paddle.cs**|||
-|**GameManager.cs**|||
+|스크립트|필드|함수|동작|
+|--|--|--|--|
+|**Ball.cs**|speed,rigidbody|<kbd>Start()</kbd><kbd>Launch()</kbd> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  Launch(); }|
+|**Goal.cs**||||
+|**Paddle.cs**||||
+|**GameManager.cs**||||
+
+
+---
+`**Ball.cs**` :  
+- 공이 나가는 방향 랜덤으로
+```c#
+float x = Random.Range(0,2) == 0 ? -1 : 1;
+float y = Random.Range(0,2) == 0 ? -1 : 1;
+
+// rigidbody에 있는 velocity(속도)에 speed 변수에서 설정한 값 곱하기
+rigidbody.velocity = new Vector2(x * speed, y * speed);
+  ``` 
+
+  - 
+```
+  private void Start()
+  {
+      // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
+      //변수로 만든 rigidbody에 Rigidbody2D 할당하기
+      rigidbody = GetComponent<Rigidbody2D>(); 
+      Launch(); // 시작하면 Launch() 실행
+  }
+
+```
+
+```
+  public void Reset()
+  {
+      rigidbody.velocity = Vector2.zero;
+      rigidbody.position = Vector2.zero;
+     
+      Launch();
+  }
+```
+
 
 
 ---
