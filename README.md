@@ -2,7 +2,7 @@
 
 |스크립트|필드|함수|동작|
 |--|--|--|--|
-|**Ball.cs**|speed,rigidbody|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
+|**Ball.cs**|public float speed;<br> public Rigidbody2D rigidbody;|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
 |**Goal.cs**|public bool isPlayer1Goal; <br> private GameManager gameManager;|Start()<br>OnTriggerEnter2D(Collider2D collision)| if (collision.name.Equals("Ball"))<br>{if (isPlayer1Goal) else} |
 |**Paddle.cs**| public bool isPlayer1;<br> public float speed;<br> public Rigidbody2D rigidbody; public KeyCode Up;<br> public KeyCode Down;<br> private float movement;<br> private Vector3 startPosition;|Start()<br>Update()<br>Reset()||
 |**GameManager.cs**|public Ball ball;<br> public Paddle player1Paddle;<br>public Goal player1Goal;<br> public Paddle player2Paddle;<br> public Goal player2Goal;<br> public TextMeshProUGUI player1Text;<br> public TextMeshProUGUI player2Text;<br> private int player1Score;<br> private int player2Score;   |Player1Scored()<br>Player2Scored()<br>ResetPosition()||
