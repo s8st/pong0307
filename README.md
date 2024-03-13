@@ -12,15 +12,24 @@
 `**Ball.cs**` :  
 - 공이 나가는 방향 랜덤으로
 ```c#
-float x = Random.Range(0,2) == 0 ? -1 : 1;
-float y = Random.Range(0,2) == 0 ? -1 : 1;
+  private void Launch()
+  {
+      // 게임 시작하면 (x,y)좌표에 랜덤?
+      // 볼이 나가는 방향을 랜덤으로 하기 위해서
+      // (1,1) -->1사분면으로 (-1,-1) ---> 3사분면으로 
+      float x = Random.Range(0,2) == 0 ? -1 : 1;
+      float y = Random.Range(0,2) == 0 ? -1 : 1;
 
-// rigidbody에 있는 velocity(속도)에 speed 변수에서 설정한 값 곱하기
-rigidbody.velocity = new Vector2(x * speed, y * speed);
+      // rigidbody에 있는 velocity(속도)에 speed 변수에서 설정한 값 곱하기
+      rigidbody.velocity = new Vector2(x * speed, y * speed);
+
+      
+  }
   ``` 
 
-  - 
-```
+  - Rigidbody2D 할당하고 Launch();
+    
+```c#
   private void Start()
   {
       // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
@@ -30,8 +39,8 @@ rigidbody.velocity = new Vector2(x * speed, y * speed);
   }
 
 ```
-
-```
+- 공의 위치와 속도,방향 초기화하고 Launch();
+```c#
   public void Reset()
   {
       rigidbody.velocity = Vector2.zero;
