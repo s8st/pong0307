@@ -77,7 +77,9 @@ public class Paddle : MonoBehaviour
     // 득점이 플레이어 1이나 플레이어2에서 발생하면 GameManager에서 호출함 --->   private void ResetPosition()
     public void Reset()
     {
-        rigidbody.velocity = Vector3.zero;
+        // Vector2 == Vector3
+        //rigidbody.velocity = Vector3.zero;
+        rigidbody.velocity = Vector2.zero;
         // startPosition은 유니티 시작시 위치를 대입했기에 시작위치로 되돌린다.
         transform.position = startPosition;
     }
