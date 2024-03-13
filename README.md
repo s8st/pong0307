@@ -7,7 +7,8 @@
 |**Paddle.cs**| public bool isPlayer1;<br> public float speed;<br> public Rigidbody2D rigidbody; public KeyCode Up;<br> public KeyCode Down;<br> private float movement;<br> private Vector3 startPosition;|Start()<br>Update()<br>Reset()||
 |**GameManager.cs**|public Ball ball;<br> public Paddle player1Paddle;<br>public Goal player1Goal;<br> public Paddle player2Paddle;<br> public Goal player2Goal;<br> public TextMeshProUGUI player1Text;<br> public TextMeshProUGUI player2Text;<br> private int player1Score;<br> private int player2Score;   |Player1Scored()<br>Player2Scored()<br>ResetPosition()||
 
-<br>
+
+
 --- 
 
 `Ball.cs` :  
@@ -55,7 +56,7 @@
 ---
 
 
-`Goal.cs`  
+`Goal.cs` :  
 
 - GameManager 할당, --> gameManager.Player2Scored(); 실행하기 위해서
 
@@ -106,7 +107,7 @@
 
 ---  
 
-`Paddle.cs`  
+`Paddle.cs`  :
 
 - 탁구채 startPosition 초기화
 - rigidbody 초기화
@@ -156,7 +157,7 @@
 
 
 
-`GameManager.cs`  
+`GameManager.cs`  :
 
 - player1Score 숫자를 올리고
 - 점수판에 문자열로 대입
