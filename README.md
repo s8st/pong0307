@@ -13,6 +13,20 @@
 
 `Ball.cs` :  
 
+  - Rigidbody2D 할당하고 Launch();
+    
+```c#
+  private void Start()
+  {
+      // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
+      //변수로 만든 rigidbody에 Rigidbody2D 할당하기
+      rigidbody = GetComponent<Rigidbody2D>(); 
+      Launch(); // 시작하면 Launch() 실행
+  }
+
+```
+
+
 - 공이 나가는 방향 랜덤으로  
 
 ```c#
@@ -31,18 +45,7 @@
   }
   ``` 
 
-  - Rigidbody2D 할당하고 Launch();
-    
-```c#
-  private void Start()
-  {
-      // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
-      //변수로 만든 rigidbody에 Rigidbody2D 할당하기
-      rigidbody = GetComponent<Rigidbody2D>(); 
-      Launch(); // 시작하면 Launch() 실행
-  }
 
-```
 - 공의 위치와 속도,방향 초기화하고 Launch();
 ```c#
   public void Reset()
