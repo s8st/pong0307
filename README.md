@@ -2,7 +2,7 @@
 
 |스크립트|필드|함수|동작|
 |--|--|--|--|
-|**Ball.cs**|speed,rigidbody|<kbd>Start()</kbd><kbd>Launch()</kbd> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  Launch(); }|
+|**Ball.cs**|speed,rigidbody|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
 |**Goal.cs**||||
 |**Paddle.cs**||||
 |**GameManager.cs**||||
