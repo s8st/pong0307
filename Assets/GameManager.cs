@@ -59,11 +59,11 @@ public class GameManager : MonoBehaviour
     
     [Header("Player 1")]
     public Paddle player1Paddle; // PaddleÀ» ³¢¿ö³Ö±â
-    public Goal player1Goal;
+   // public Goal player1Goal;
 
     [Header("Player 2")]
     public Paddle player2Paddle;
-    public Goal player2Goal;
+   // public Goal player2Goal;
 
     [Header("UI")]
     public TextMeshProUGUI player1Text;
