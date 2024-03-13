@@ -1,11 +1,11 @@
 # pong0307
 
-|스크립트|구성|
-|--|--|
-|☑️***Ball.cs***|<kbd>Launch()</kbd> <kbd>Reset()</kbd>|
-|**Goal.cs**||
-|**Paddle.cs**||
-|**GameManager.cs**||
+|스크립트|함수|동작|
+|--|--|--|
+|☑️***Ball.cs***|<kbd>Start()</kbd><kbd>Launch()</kbd> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  Launch(); }|
+|**Goal.cs**|||
+|**Paddle.cs**|||
+|**GameManager.cs**|||
 
 
 ---
