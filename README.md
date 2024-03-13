@@ -1,17 +1,43 @@
 # pong0307
 
+
+![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
+
+---
+
 |스크립트|필드|함수|동작|
 |--|--|--|--|
 |**Ball.cs**|public float speed;<br> public Rigidbody2D rigidbody;|<kbd>Start()</kbd> <br> <kbd>Launch()</kbd> <br> <kbd>Reset()</kbd>| Start(){rigidbody = GetComponent<Rigidbody2D>();  <br>Launch(); }|
 |**Goal.cs**|public bool isPlayer1Goal; <br> private GameManager gameManager;|Start()<br>OnTriggerEnter2D(Collider2D collision)| if (collision.name.Equals("Ball"))<br>{if (isPlayer1Goal) else} |
-|**Paddle.cs**| public bool isPlayer1;<br> public float speed;<br> public Rigidbody2D rigidbody; public KeyCode Up;<br> public KeyCode Down;<br> private float movement;<br> private Vector3 startPosition;|Start()<br>Update()<br>Reset()||
-|**GameManager.cs**|public Ball ball;<br> public Paddle player1Paddle;<br>public Goal player1Goal;<br> public Paddle player2Paddle;<br> public Goal player2Goal;<br> public TextMeshProUGUI player1Text;<br> public TextMeshProUGUI player2Text;<br> private int player1Score;<br> private int player2Score;   |Player1Scored()<br>Player2Scored()<br>ResetPosition()||
-
+|**Paddle.cs**| public bool isPlayer1;<br> public float speed;<br> public Rigidbody2D rigidbody;<br> public KeyCode Up;<br> public KeyCode Down;<br> private float movement;<br> private Vector3 startPosition;|Start()<br>Update()<br>Reset()||
+|**GameManager.cs**|public Ball ball;<br> public Paddle player1Paddle;<br>**~public Goal player1Goal;~**<br> public Paddle player2Paddle;<br>**~public Goal player2Goal;~**<br> public TextMeshProUGUI player1Text;<br> public TextMeshProUGUI player2Text;<br> private int player1Score;<br> private int player2Score;   |Player1Scored()<br>Player2Scored()<br>ResetPosition()||
+||**~public Goal player1Goal;~**<br> **~public Goal player2Goal;~**<br>삭제해도 문제가 없다. 사용하는 메서드가 없음||
 
 
 --- 
 
+
+
+
+
+---
+
+
 `Ball.cs` :  
+
+  - Rigidbody2D 할당하고 Launch();
+    
+```c#
+  private void Start()
+  {
+      // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
+      //변수로 만든 rigidbody에 Rigidbody2D 할당하기
+      rigidbody = GetComponent<Rigidbody2D>(); 
+      Launch(); // 시작하면 Launch() 실행
+  }
+
+```
+
 
 - 공이 나가는 방향 랜덤으로  
 
@@ -31,18 +57,7 @@
   }
   ``` 
 
-  - Rigidbody2D 할당하고 Launch();
-    
-```c#
-  private void Start()
-  {
-      // 시작할 때 변수들에 컴포넌트 등을 대입하여 사용하기 위해
-      //변수로 만든 rigidbody에 Rigidbody2D 할당하기
-      rigidbody = GetComponent<Rigidbody2D>(); 
-      Launch(); // 시작하면 Launch() 실행
-  }
 
-```
 - 공의 위치와 속도,방향 초기화하고 Launch();
 ```c#
   public void Reset()
@@ -212,8 +227,6 @@
 
 
 ---
-
-![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
 
 
  ---
