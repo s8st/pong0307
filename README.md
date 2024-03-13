@@ -1,5 +1,13 @@
 # pong0307
 
+|스크립트|구성|
+|--|--|
+|☑️***Ball.cs***|<kbd>Launch()</kbd> <kbd>Reset()</kbd>|
+|**Goal.cs**||
+|**Paddle.cs**||
+|**GameManager.cs**||
+
+
 ---
 
 ![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
