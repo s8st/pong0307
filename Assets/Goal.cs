@@ -34,7 +34,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool isPlayer1Goal;
+    public bool isPlayer1Goal; //유니티 인스펙터에서 체크
     private GameManager gameManager;
 
     private void Start()
@@ -56,7 +56,7 @@ public class Goal : MonoBehaviour
         // Equals("")
         if (collision.name.Equals("Ball"))
         {
-            if (isPlayer1Goal)
+            if (isPlayer1Goal) //플레이어1에 체크해서 true라면
             {
                 Debug.Log("Player 2 Scored");
                 // Player2Scored 실행하라
