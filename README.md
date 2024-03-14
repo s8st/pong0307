@@ -1,7 +1,18 @@
 # pong0307
 
 
-![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)
+![Unity_IboNXQ0UZH](https://github.com/s8st/pong0307/assets/153998744/85c190a8-a87f-4dae-b051-771d530210e5)  
+
+---
+
+
+```mermaid
+graph TD;
+    GameManager-->Ball-->GameManager;
+    GameManager-->Goal-->GameManager;
+    GameManager-->Paddle-->GameManager;
+    
+```
 
 ---
 
