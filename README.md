@@ -7,10 +7,10 @@
 
 
 ```mermaid
-graph TD;
-    GameManager-->Ball-->GameManager;
-    GameManager-->Goal-->GameManager;
-    GameManager-->Paddle-->GameManager;
+graph LR;
+    GameManager <==> Ball;
+    GameManager <---> Goal
+    GameManager<-->Paddle
     
 ```
 
